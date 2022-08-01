@@ -1,5 +1,4 @@
-import { OperationType } from "firebase/auth";
-import React from "react";
+import { useState } from "react";
 import "./styles/Recruitment.css";
 
 const Recruitment = () => {
