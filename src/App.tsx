@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import CreatePost from "./components/CreatePost";
+import Recruitment from "./components/Recruitment";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
 import Navber from "./components/Navber";
@@ -11,10 +11,10 @@ function App() {
   const [isAuth, setIsAuth] = useState(false);
   return (
     <Router>
-      <Navber />
+      <Navber isAuth={isAuth} />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/createpost" element={<CreatePost />}></Route>
+        <Route path="/recruitment" element={<Recruitment />}></Route>
         <Route path="/login" element={<Login setIsAuth={setIsAuth} />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
       </Routes>

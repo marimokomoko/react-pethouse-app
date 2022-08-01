@@ -8,25 +8,32 @@ import {
   faArrowRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Navber = () => {
+const Navber = ({ isAuth }: any) => {
   return (
     <nav>
       <Link to="/">
         <FontAwesomeIcon icon={faHouse} />
         ホーム
       </Link>
-      <Link to="/createpost">
+      <Link to="/recruitment">
         <FontAwesomeIcon icon={faFilePen} />
         里親募集
       </Link>
-      <Link to="/createpost">
+      <Link to="/recruitment">
         <FontAwesomeIcon icon={faFilePen} />
-        ペットたち
+        ペットログ
       </Link>
-      <Link to="/login">
-        <FontAwesomeIcon icon={faArrowRightToBracket} />
-        login
-      </Link>
+      {!isAuth ? (
+        <Link to="/login">
+          <FontAwesomeIcon icon={faArrowRightToBracket} />
+          ログイン
+        </Link>
+      ) : (
+        <Link to="/logout">
+          <FontAwesomeIcon icon={faArrowRightToBracket} />
+          ログアウト
+        </Link>
+      )}
     </nav>
   );
 };

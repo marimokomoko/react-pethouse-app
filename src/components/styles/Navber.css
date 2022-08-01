@@ -3,8 +3,8 @@ nav {
   justify-content: center;
   align-items: center;
   height: 50px;
-  background-color: rgb(255, 253, 236);
-  gap: 45px;
+  background-color: white;
+  gap: 75px;
 }
 
 nav a {
@@ -13,7 +13,8 @@ nav a {
 }
 
 nav a:hover {
-  color: aqua;
+  color: rgb(165, 165, 165);
+  transition: all 0.3s;
 }
 
 nav a svg {

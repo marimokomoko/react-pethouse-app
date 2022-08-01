@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const Logout = ({ setIsAuth }: any) => {
   const navigate = useNavigate();
   const logout = () => {
-    // Googleでログアウト
+    // ログアウト
     signOut(auth).then(() => {
       localStorage.clear();
       setIsAuth(false);
