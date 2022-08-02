@@ -6,6 +6,8 @@ import {
   faHouse,
   faFilePen,
   faArrowRightToBracket,
+  faDog,
+  faCat,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Navber = ({ isAuth }: any) => {
@@ -16,11 +18,11 @@ const Navber = ({ isAuth }: any) => {
         ホーム
       </Link>
       <Link to="/recruitment">
-        <FontAwesomeIcon icon={faFilePen} />
+        <FontAwesomeIcon icon={faDog} />
         里親募集
       </Link>
       <Link to="/recruitment">
-        <FontAwesomeIcon icon={faFilePen} />
+        <FontAwesomeIcon icon={faCat} />
         ペットログ
       </Link>
       {!isAuth ? (

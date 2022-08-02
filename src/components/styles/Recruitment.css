@@ -7,7 +7,6 @@
 
 .container {
   background-color: white;
-  border-radius: 10px;
   text-align: left;
   align-items: center;
   display: flex;
@@ -17,6 +16,18 @@
   width: 70%;
   padding: 10px 40px;
   margin: 20px;
+  border-radius: 10px;
+  border: 1px solid;
+  border-color: #e7e7e7;
+}
+
+.container .inputItem {
+  margin: 10px 0 3px 0;
+}
+
+.container .fontIcon {
+  margin-right: 3px;
+  color: rgb(105, 83, 51);
 }
 
 .container h2 {
@@ -24,15 +35,27 @@
 }
 
 .container input {
-  height: 20px;
+  height: 30px;
   width: 70%;
   outline: none;
+  border: thin solid rgb(187, 187, 187);
+  border-radius: 8px;
 }
 
 .container textarea {
   height: 100px;
   width: 70%;
   outline: none;
+  border: thin solid rgb(187, 187, 187);
+  border-radius: 8px;
+}
+
+.container select {
+  height: 30px;
+  width: 150px;
+  outline: none;
+  border: thin solid rgb(187, 187, 187);
+  border-radius: 8px;
 }
 
 .inputPost {
@@ -49,7 +72,7 @@
   border-radius: 10px;
   text-align: center;
   cursor: pointer;
-  margin: 5px;
+  margin: 25px;
 }
 
 .postButton:hover {

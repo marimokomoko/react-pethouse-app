@@ -1,22 +1,73 @@
+import { addDoc, collection } from "firebase/firestore";
 import { useState } from "react";
+import { auth, db } from "../firebase";
 import "./styles/Recruitment.css";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import { idText } from "typescript";
 
 const Recruitment = () => {
+  const [id, setId] = useState("");
+  const [currentStatus, setCurrentStatus] = useState("");
+  const [title, setTitle] = useState("");
+  const [position, setPosition] = useState("");
+  const [animalType, setAnimalType] = useState("");
+  const [background, setBackground] = useState("");
+  const [transferPlan, setTransferPlan] = useState("");
+  const [remarks, setremarks] = useState("");
+  // const [photo, setPhoto] = useState("");
+
+  const navigate = useNavigate();
+
+  const createPost = async () => {
+    await addDoc(collection(db, "recruitment_posts"), {
+      id: id,
+      currentStatus: currentStatus,
+      title: title,
+      position: position,
+      animalType: animalType,
+      background: background,
+      transferPlan: transferPlan,
+      remarks: remarks,
+      // author: {
+      //   username: auth.currentUser.displayName,
+      //   id: auth.currentUser.uid
+      // }
+    });
+
+    navigate("/");
+  };
+
   return (
     <div className="recruitmentPage">
       <h1>里親を募集する</h1>
       <div className="container">
         <h2>1.基本データを入力してください</h2>
         <div className="inputPost">
-          <div>募集状況</div>
-          <select>
+          <div className="inputItem">
+            <FontAwesomeIcon className="fontIcon" icon={faPaw} />
+            id
+            <input type="text" onChange={(e) => setId(e.target.value)} />
+          </div>
+          <div className="inputItem">
+            <FontAwesomeIcon className="fontIcon" icon={faPaw} />
+            募集状況
+          </div>
+          <select onChange={(e) => setCurrentStatus(e.target.value)}>
             <option value="募集中">募集中</option>
             <option value="募集終了">募集終了</option>
           </select>
-          <div>タイトル</div>
-          <input type="text" />
-          <div>ペット現在所在地</div>
-          <select>
+          <div className="inputItem">
+            <FontAwesomeIcon className="fontIcon" icon={faPaw} />
+            タイトル
+          </div>
+          <input type="text" onChange={(e) => setTitle(e.target.value)} />
+          <div className="inputItem">
+            <FontAwesomeIcon className="fontIcon" icon={faPaw} />
+            ペット現在所在地
+          </div>
+          <select onChange={(e) => setPosition(e.target.value)}>
             <option value="北海道">北海道</option>
             <option value="青森県">青森県</option>
             <option value="岩手県">岩手県</option>
@@ -65,28 +116,47 @@ const Recruitment = () => {
             <option value="鹿児島県">鹿児島県</option>
             <option value="沖縄県">沖縄県</option>
           </select>
-          <div>ペット種類</div>
-          <input type="text" />
+          <div className="inputItem">
+            <FontAwesomeIcon className="fontIcon" icon={faPaw} />
+            ペット種類
+          </div>
+          <input type="text" onChange={(e) => setAnimalType(e.target.value)} />
         </div>
       </div>
       <div className="container">
         <h2>2.詳細を入力してください</h2>
         <div className="inputPost">
-          <div>募集の経緯</div>
-          <textarea></textarea>
-          <div>引き渡し方法</div>
-          <textarea></textarea>
-          <div>その他備考</div>
-          <textarea></textarea>
+          <div className="inputItem">
+            <FontAwesomeIcon className="fontIcon" icon={faPaw} />
+            募集の経緯
+          </div>
+          <textarea onChange={(e) => setBackground(e.target.value)}></textarea>
+          <div className="inputItem">
+            <FontAwesomeIcon className="fontIcon" icon={faPaw} />
+            引き渡し方法
+          </div>
+          <textarea
+            onChange={(e) => setTransferPlan(e.target.value)}
+          ></textarea>
+          <div className="inputItem">
+            <FontAwesomeIcon className="fontIcon" icon={faPaw} />
+            その他備考
+          </div>
+          <textarea onChange={(e) => setremarks(e.target.value)}></textarea>
         </div>
       </div>
       <div className="container">
         <h2>3.写真をアップロード</h2>
         <div className="inputPost">
-          <div>ペット写真</div>
+          <div className="inputItem">
+            <FontAwesomeIcon className="fontIcon" icon={faPaw} />
+            ペット写真
+          </div>
         </div>
       </div>
-      <button className="postButton">投稿する</button>
+      <button className="postButton" onClick={createPost}>
+        投稿する
+      </button>
     </div>
   );
 };
