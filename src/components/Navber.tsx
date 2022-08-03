@@ -4,7 +4,6 @@ import "./styles/Navber.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
-  faFilePen,
   faArrowRightToBracket,
   faDog,
   faCat,

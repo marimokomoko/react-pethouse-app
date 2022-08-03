@@ -5,10 +5,10 @@ import "./styles/Recruitment.css";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaw } from "@fortawesome/free-solid-svg-icons";
-import { idText } from "typescript";
+import ImageUploader from "./ImageUploder";
 
 const Recruitment = () => {
-  const [id, setId] = useState("");
+  // const [id, setId] = useState("");
   const [currentStatus, setCurrentStatus] = useState("");
   const [title, setTitle] = useState("");
   const [position, setPosition] = useState("");
@@ -22,7 +22,7 @@ const Recruitment = () => {
 
   const createPost = async () => {
     await addDoc(collection(db, "recruitment_posts"), {
-      id: id,
+      // id: id,
       currentStatus: currentStatus,
       title: title,
       position: position,
@@ -30,10 +30,10 @@ const Recruitment = () => {
       background: background,
       transferPlan: transferPlan,
       remarks: remarks,
-      // author: {
-      //   username: auth.currentUser.displayName,
-      //   id: auth.currentUser.uid
-      // }
+      author: {
+        username: auth.currentUser?.displayName,
+        id: auth.currentUser?.uid,
+      },
     });
 
     navigate("/");
@@ -45,16 +45,17 @@ const Recruitment = () => {
       <div className="container">
         <h2>1.基本データを入力してください</h2>
         <div className="inputPost">
-          <div className="inputItem">
+          {/* <div className="inputItem">
             <FontAwesomeIcon className="fontIcon" icon={faPaw} />
             id
             <input type="text" onChange={(e) => setId(e.target.value)} />
-          </div>
+          </div> */}
           <div className="inputItem">
             <FontAwesomeIcon className="fontIcon" icon={faPaw} />
             募集状況
           </div>
           <select onChange={(e) => setCurrentStatus(e.target.value)}>
+            <option value=""></option>
             <option value="募集中">募集中</option>
             <option value="募集終了">募集終了</option>
           </select>
@@ -68,6 +69,7 @@ const Recruitment = () => {
             ペット現在所在地
           </div>
           <select onChange={(e) => setPosition(e.target.value)}>
+            <option value=""></option>
             <option value="北海道">北海道</option>
             <option value="青森県">青森県</option>
             <option value="岩手県">岩手県</option>
@@ -152,6 +154,7 @@ const Recruitment = () => {
             <FontAwesomeIcon className="fontIcon" icon={faPaw} />
             ペット写真
           </div>
+          <ImageUploader />
         </div>
       </div>
       <button className="postButton" onClick={createPost}>
