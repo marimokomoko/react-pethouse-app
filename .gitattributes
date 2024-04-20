@@ -1,0 +1,6 @@
+*.html linguist-language=HTML
+*.ts linguist-language=TypeScript
+*.tsx linguist-language=TypeScript
+*.vue linguist-language=Vue
+*.js linguist-language=JavaScript
+*.jsx linguist-language=JavaScript
